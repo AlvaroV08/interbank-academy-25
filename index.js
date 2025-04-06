@@ -15,7 +15,7 @@ fs.createReadStream('data.csv')
     const id = row.id;
     const tipo = row.tipo.trim();
     const monto = parseFloat(row.monto);
-
+//Comprobamos el tipo de transacción y actualizamos el balance y subimos el conteo correspondiente
     if (tipo === 'Crédito') {
       balance += monto;
       balanceCredit += monto;
@@ -25,12 +25,14 @@ fs.createReadStream('data.csv')
       balanceDebit += monto;
       debitCount++;
     }
-
+//Evaluamos si el monto de la transacción es mayor al máximo registrado y lo actualizamos
     if (monto > maxTrans.monto) {
       maxTrans = { id, monto };
     }
   })
   .on('end', () => {
+    //Al finalizar la lectura del archivo, imprimimos el reporte de transacciones
+    console.log('---------------------------------------------');
     console.log('\nReporte de Transacciones');
     console.log('---------------------------------------------');
     console.log(`Balance Final: ${balance.toFixed(2)}`);
