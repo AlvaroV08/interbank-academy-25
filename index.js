@@ -33,7 +33,7 @@ fs.createReadStream('data.csv')
   .on('end', () => {
     //Al finalizar la lectura del archivo, imprimimos el reporte de transacciones
     console.log('---------------------------------------------');
-    console.log('\nReporte de Transacciones');
+    console.log('Reporte de Transacciones');
     console.log('---------------------------------------------');
     console.log(`Balance Final: ${balance.toFixed(2)}`);
     console.log(`Balance Crédito: ${balanceCredit.toFixed(2)}`);
